@@ -822,7 +822,13 @@ scm_find_slot_map_unlocked (const uint32_t *ip)
 void
 scm_bootstrap_loader (void)
 {
+#ifdef _WIN32
+  SYSTEM_INFO sSysInfo;
+  GetSystemInfo(&sSysInfo);
+  page_size = sSysInfo.dwPageSize;
+#else
   page_size = getpagesize ();
+#endif
   /* page_size should be a power of two.  */
   if (page_size & (page_size - 1))
     abort ();

@@ -596,7 +596,13 @@ scm_i_vm_prepare_stack (struct scm_vm *vp)
      Guile.  */
   if (page_size == 0)
     {
+    #ifdef _WIN32
+      SYSTEM_INFO sSysInfo;
+      GetSystemInfo(&sSysInfo);
+      page_size = sSysInfo.dwPageSize;
+    #else
       page_size = getpagesize ();
+    #endif
       /* page_size should be a power of two.  */
       if (page_size & (page_size - 1))
         abort ();

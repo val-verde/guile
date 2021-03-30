@@ -24,6 +24,8 @@
    Author: Aubrey Jaffer
    Modified for libguile by Marius Vollmer */
 
+#ifndef _WIN32
+
 #ifdef HAVE_CONFIG_H
 # include <config.h>
 #endif
@@ -197,3 +199,5 @@ scm_init_dynamic_linking ()
   scm_c_define_gsubr
     ("dynamic-call", 2, 0, 0, (scm_t_subr) scm_dynamic_call);
 }
+
+#endif /* _WIN32 */

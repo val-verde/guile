@@ -18,7 +18,7 @@
    <https://www.gnu.org/licenses/>.  */
 
 
-
+#ifndef _WIN32
 
 #ifdef HAVE_CONFIG_H
 #  include <config.h>
@@ -1774,3 +1774,4 @@ scm_init_socket ()
 #include "socket.x"
 }
 
+#endif /* _WIN32 */
