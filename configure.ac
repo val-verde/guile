@@ -215,7 +215,7 @@ AC_ARG_WITH([64-calls],
   [use_64_calls=$withval],
   [use_64_calls=yes
    case $host in
-     *-apple-darwin* )
+     *-apple-darwin* | *-*-ios* | *-*-macos* )
        use_64_calls=no
        ;;
      powerpc-ibm-aix* )
